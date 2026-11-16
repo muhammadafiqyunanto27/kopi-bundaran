@@ -1,0 +1,110 @@
+---
+import { menu, formatPrice } from "../data/menu";
+---
+<section id="menu" class="section">
+  <div class="container">
+    <header class="menu-header">
+      <h2 class="section-title">Menu</h2>
+      <p class="section-sub">harga dalam Rupiah, dapat berubah sewaktu-waktu</p>
+    </header>
+
+    <div class="menu-categories">
+      {menu.map((cat) => (
+        <div class="menu-category sketch">
+          <h3 class="category-title">{cat.title}</h3>
+          <ul class="menu-items">
+            {cat.items.map((item) => (
+              <li class="menu-item">
+                <div class="item-info">
+                  <span class="item-name">{item.name}</span>
+                  {item.note && <span class="item-desc">{item.note}</span>}
+                </div>
+                <span class="item-price">
+                  {item.from ? "mulai " : ""}{formatPrice(item.price)}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .menu-header { text-align: center; margin-bottom: 2rem; }
+  .menu-categories { display: flex; flex-direction: column; gap: 2.25rem; }
+
+  .menu-category {
+    padding: 1.75rem 2rem;
+  }
+
+  .category-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 1.5rem;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+  }
+
+  .menu-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 0.75rem;
+  }
+
+  .menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    padding: 0.15rem 0;
+  }
+
+  .item-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.15rem; }
+
+  .item-name {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.3;
+    letter-spacing: 0.1px;
+  }
+
+  .item-desc {
+    font-size: 0.8rem;
+    color: var(--gray);
+    font-style: italic;
+    line-height: 1.3;
+  }
+
+  .item-price {
+    font-family: "Caveat", cursive;
+    font-size: 1.15rem;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+    color: var(--ink);
+    text-align: right;
+  }
+
+  /* 2 columns on desktop, no divider lines */
+  @media (min-width: 768px) {
+    .menu-items {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 3rem;
+      row-gap: 0.85rem;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .menu-categories { gap: 1.5rem; }
+    .menu-category { padding: 1.5rem 1.5rem; }
+    .category-title { font-size: 1.1rem; }
+    .item-name { font-size: 0.95rem; }
+    .item-price { font-size: 1.05rem; }
+    .item-desc { font-size: 0.75rem; }
+  }
+</style>

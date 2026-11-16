@@ -1,0 +1,115 @@
+:root {
+  --ink: #1a1a1a;
+  --paper: #faf7f0;
+  --paper-2: #f1ece0;
+  --paper-3: #e8e0d0;
+  --gray: #5a5a5a;
+  --accent: #1a1a1a;
+  --max: 1120px;
+  --space: 1.25rem;
+  --header-h: 75px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Kalam", "Patrick Hand", "Comic Sans MS", cursive;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.6;
+  font-size: 17px;
+  background-image:
+    radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+    radial-gradient(rgba(0,0,0,0.02) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 2px 3px;
+}
+
+h1, h2, h3, .hand {
+  font-family: "Caveat", "Permanent Marker", cursive;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+a { color: var(--ink); text-decoration: none; }
+
+.container {
+  width: min(var(--max), 92vw);
+  margin: 0 auto;
+}
+
+/* lighter sketch card */
+.sketch {
+  border: 1.5px solid var(--ink);
+  border-radius: 180px 12px 160px 12px / 12px 160px 12px 180px;
+  padding: 1.25rem 1.5rem;
+  background: #fff;
+  box-shadow: 2px 3px 0 0 rgba(0,0,0,0.05);
+}
+
+.sketch-sm {
+  border: 1.5px solid var(--ink);
+  border-radius: 100px 6px 75px 6px / 6px 75px 6px 100px;
+  padding: 0.5rem 0.9rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.55rem 1.25rem;
+  border: 2px solid var(--ink);
+  border-radius: 180px 12px 160px 12px / 12px 160px 12px 180px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: "Caveat", cursive;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+.btn:hover { transform: translate(-1px,-2px); }
+.btn.outline {
+  background: transparent;
+  color: var(--ink);
+}
+
+/* tighter section rhythm */
+.section {
+  padding: calc(var(--space) * 2) 0;
+}
+.section:first-of-type { padding-top: calc(var(--space) * 1.25); }
+.section:last-of-type { padding-bottom: calc(var(--space) * 2.5); }
+
+.section-title {
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  margin: 0 0 0.3rem;
+  text-align: center;
+}
+.section-sub {
+  text-align: center;
+  color: var(--gray);
+  margin: 0 0 calc(var(--space) * 1.25);
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+.doodle { display: inline-block; }
+
+hr.sketch-line {
+  border: none;
+  border-top: 1.5px dashed var(--ink);
+  margin: calc(var(--space) * 1.25) 0;
+}
+
+@media (max-width: 720px) {
+  :root { --space: 1rem; --header-h: 62px; }
+  body { font-size: 16px; }
+  .section { padding: calc(var(--space) * 1.75) 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+}

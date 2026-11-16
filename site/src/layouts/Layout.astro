@@ -1,0 +1,96 @@
+---
+import "../styles/global.css";
+import { siteInfo } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { title = "Kopi Bundaran", description = "Kopi Bundaran — cafe & menu." } = Astro.props;
+---
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Kalam:wght@300;400;700&family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="/" class="logo">Kopi Bundaran <span class="doodle">☕</span></a>
+        <nav class="nav">
+          <a href="#menu">Menu</a>
+          <a href="#galeri">Galeri</a>
+          <a href="#kontak">Kontak</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>© {new Date().getFullYear()} {siteInfo.name}. Dibuat dengan tangan &amp; kopi.</p>
+        <p class="muted">Menu &amp; harga dapat berubah sewaktu-waktu.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(250, 247, 240, 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 2px dashed var(--ink);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .logo {
+    font-family: "Caveat", cursive;
+    font-size: 1.9rem;
+    font-weight: 700;
+  }
+  .nav {
+    display: flex;
+    gap: 1.25rem;
+    font-family: "Caveat", cursive;
+    font-size: 1.3rem;
+  }
+  .nav a:hover { text-decoration: underline; text-decoration-style: wavy; }
+  .site-footer {
+    border-top: 1px solid var(--ink);
+    padding: 1.25rem 0;
+    text-align: center;
+    color: var(--gray);
+    font-size: 0.9rem;
+  }
+  .muted { font-size: 0.8rem; opacity: 0.7; }
+
+  @media (max-width: 720px) {
+    .header-inner {
+      padding: 0.55rem 0;
+      flex-wrap: nowrap;
+      gap: 0.75rem;
+    }
+    .logo { font-size: 1.4rem; }
+    .nav { gap: 0.85rem; font-size: 1.05rem; }
+  }
+</style>

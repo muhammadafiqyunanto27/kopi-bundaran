@@ -1,0 +1,118 @@
+---
+import { siteInfo } from "../data/site";
+---
+<section id="kontak" class="section">
+  <div class="container">
+    <header class="menu-header">
+      <h2 class="section-title">Kontak & Lokasi</h2>
+      <p class="section-sub">datang dan temui kami</p>
+    </header>
+    <div class="contact-grid">
+      <div class="contact-info sketch">
+        <dl class="info-list">
+          <div>
+            <dt>Alamat</dt>
+            <dd>{siteInfo.address}</dd>
+          </div>
+          <div>
+            <dt>Jam Buka</dt>
+            <dd>{siteInfo.hours}</dd>
+          </div>
+          <div>
+            <dt>WhatsApp</dt>
+            <dd>{siteInfo.whatsapp}</dd>
+          </div>
+          <div>
+            <dt>Instagram</dt>
+            <dd>{siteInfo.instagram}</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="map-box sketch">
+        {siteInfo.mapsEmbed ? (
+          <div class="map-frame" set:html={siteInfo.mapsEmbed} />
+        ) : (
+          <div class="map-frame map-fallback">
+            <p>Tempel iframe Google Maps di <code>src/data/site.ts</code></p>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  
+  .contact-info,
+  .map-box {
+    height: 100%;
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .info-list {
+    margin: 0;
+    display: grid;
+    gap: 1.1rem;
+    flex: 1;
+  }
+  .info-list div { display: grid; gap: 0.2rem; }
+  .info-list dt {
+    font-family: "Caveat", cursive;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
+  .info-list dd {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+  
+  .map-box { position: relative; }
+  .map-frame { 
+    flex: 1; 
+    width: 100%; 
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .map-frame iframe { width: 100%; height: 100%; border: 0; }
+  .map-fallback {
+    border: 1.5px dashed var(--ink);
+    border-radius: 10px;
+    background: var(--paper-2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--gray);
+    height: 100%;
+  }
+  .map-fallback code {
+    background: rgba(0,0,0,0.05);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    font-size: 0.85em;
+  }
+  .map-fallback p { margin: 0 0 0.5rem; }
+  .map-fallback p:last-child { margin: 0; }
+  
+  @media (max-width: 720px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-info,
+    .map-box { min-height: auto; }
+    .map-fallback { min-height: 200px; }
+  }
+</style>

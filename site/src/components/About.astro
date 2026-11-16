@@ -1,0 +1,85 @@
+---
+---
+<section id="tentang" class="section">
+  <div class="container">
+    <header class="menu-header">
+      <h2 class="section-title">Tentang Kami</h2>
+      <p class="section-sub">sudut kecil dengan kopi yang jujur</p>
+    </header>
+    <div class="about-card sketch">
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            Kopi Bundaran hadir sebagai tempat singgah: secangkir kopi yang diseduh dengan
+            sabar, suasana hangat, dan ruang untuk bercerita. Menu kami sederhana — kopi
+            klasik, latte, kopi tubruk, minuman non-kopi, dan camilan — supaya kamu bisa
+            fokus pada yang penting: menikmati momen.
+          </p>
+          <p>
+            Di sini kamu bisa duduk sebentar, membuka buku, menyelesaikan pekerjaan, atau
+            sekadar berbincang ringan. Kami percaya kopi yang baik tidak harus rumit —
+            cukup biji pilihan, seduhan yang tepat, dan teman yang menyenangkan.
+          </p>
+        </div>
+        <div class="about-points">
+          <h3 class="hand">Kenapa "Bundaran"?</h3>
+          <ul class="about-list">
+            <li>Tempat bertemu &amp; berputar cerita</li>
+            <li>Kopi yang muter dari tangan barista ke meja kamu</li>
+            <li>Lingkaran kecil komunitas</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-card {
+    width: 100%;
+    padding: 2.75rem 3.5rem;
+  }
+  .about-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .about-text p {
+    margin: 0 0 1.5rem;
+    line-height: 1.95;
+    font-size: 1.1rem;
+  }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-points h3 {
+    margin: 0 0 1.5rem;
+    font-size: 1.4rem;
+    text-align: center;
+  }
+  .about-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    line-height: 1.9;
+  }
+  .about-list li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 0.9rem;
+  }
+  .about-list li:last-child { margin-bottom: 0; }
+  .about-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ink);
+    opacity: 0.65;
+  }
+  @media (max-width: 760px) {
+    .about-card { padding: 2rem 1.75rem; }
+    .about-grid { gap: 1.75rem; }
+  }
+</style>
